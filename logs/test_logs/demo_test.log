@@ -1,0 +1,122 @@
+Script started on 2026-05-10 12:10:32+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="149" LINES="47"]
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ makce[K[Ke clean; make
+[?2004lrm -f bin/*
+mkdir -p bin
+cp -f ../sample/interfaces.json ../sample/static_routes.json bin/
+gcc -I../include -Wall -Wextra -g3 ../src/cli.c ../src/common.c ../src/interface.c ../src/json_conf_loader.c ../src/lpm_engine.c ../src/main.c ../src/print_utils.c ../src/route_table_manager.c -o bin/router_demo
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ cd bin/
+[?2004l[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[00m$ ./router_demo 
+[?2004l*****************************************************
+Project: Virtual Router Started :
+*****************************************************
+[INFO] stored interface[0]: name=eth0 ip=10.0.0.1/24 status=up
+[INFO] created connected route[0]: 10.0.0.0/24 dev eth0
+[INFO] stored interface[1]: name=eth1 ip=192.168.1.1/24 status=up
+[INFO] created connected route[1]: 192.168.1.0/24 dev eth1
+[INFO] read_n_store_interface_config: 2 interfaces loaded from interfaces.json
+[INFO] stored route[2]: 172.16.0.0/16 via 192.168.1.254 dev 
+[INFO] stored route[3]: 172.16.10.0/24 via  dev eth0
+[INFO] read_n_store_static_routes: 2 routes added from static_routes.json
+=== CLI Help ===
+Supported commands: 
+  show-interfaces            - Display interface information
+  show-interface <eth>       - Display information for specific interface
+  show-interface-stats <eth> - Display statistics for specific interface
+  show-all-interface-stats   - Display statistics for all interfaces
+  show-route | show-routes   - Display route information
+  network <eth> down|up      - Update interface status
+  route-del <net> <prefix> <nexthop> <interface>  - Delete route at index
+  route-add <net> <prefix> <nexthop> <interface>  - Add a new route
+  route-mod <net> <prefix> <nexthop> <interface> <preference> - Modify an existing route
+  lookup <IPv4>              - Perform a route lookup
+  explain-lookup <IPv4>      - Explain the route lookup process
+  help | h | ?               - Display the help message
+  exit | quit | q            - Exit the CLI
+================
+cli> show-interfaces
+Interface        IP Address         Prefix   Oper Status        Admin Status
+---------        ----------         ------   ------------       ------------
+eth0             10.0.0.1           24       up                 up
+eth1             192.168.1.1        24       up                 up
+cli> show-interface eth1
+Interface        IP Address         Prefix   Oper Status        Admin Status
+---------        ----------         ------   ------------       ------------
+eth1             192.168.1.1        24       up                 up
+cli> show-interface-stats eth0
+Interface             RX Packets      TX Packets        RX Bytes        TX Bytes
+---------             ----------      ----------        --------        --------
+eth0                        1200             980          240000          180500
+cli> show-all-interface-stats
+Interface             RX Packets      TX Packets        RX Bytes        TX Bytes
+---------             ----------      ----------        --------        --------
+eth0                        1200             980          240000          180500
+eth1                         800             650          125000          110200
+cli> show-route
+Network            Prefix   Next Hop           Interface  Route Type     Status Preference
+-------            ------   --------           ---------  ----------     ------ ----------
+10.0.0.0           24       DIRECT             eth0        Connected     active 0
+192.168.1.0        24       DIRECT             eth1        Connected     active 0
+172.16.0.0         16       DIRECT                            Static     active 10
+172.16.10.0        24       DIRECT             eth0           Static     active 20
+cli> network eth0 3 2 up
+Interface eth2 not found!
+cli> route-add 172.16.10.0 24 255.11  25.255.0 eth2
+Route added at index 4: 255.25.255.0/24 via 255.25.255.0 dev eth2
+cli> show-interfaces
+Interface        IP Address         Prefix   Oper Status        Admin Status
+---------        ----------         ------   ------------       ------------
+eth0             10.0.0.1           24       up                 up
+eth1             192.168.1.1        24       up                 up
+cli> show-route
+Network            Prefix   Next Hop           Interface  Route Type     Status Preference
+-------            ------   --------           ---------  ----------     ------ ----------
+10.0.0.0           24       DIRECT             eth0        Connected     active 0
+192.168.1.0        24       DIRECT             eth1        Connected     active 0
+172.16.0.0         16       DIRECT                            Static     active 10
+172.16.10.0        24       DIRECT             eth0           Static     active 20
+172.16.10.0        24       255.25.255.0       eth2           Static   inactive 0
+cli> 172.16.0.0          lookup 172.16.10.10
+Lookup Result for IP     : 172.16.10.10
+Matched Route Index      : 3
+Outgoing Interface       : eth0
+Prefix Length            : 24
+Route Type               : Static
+Next Hop                 : DIRECT
+Status                   : active
+cli> ookup 172.16.10.10                  explain-lookup ookup 172.16.10.10^[[D^[[D^[[D^[[D^[[D^[[D^[[D                                              172.16.10.10
+Lookup Result for IP     : 172.16.10.10
+Matched Route Index      : 3
+Outgoing Interface       : eth0
+Prefix Length            : 24
+Route Type               : Static
+Next Hop                 : DIRECT
+Status                   : active
+Explain Lookup Result for IP: 172.16.10.10
+Index      Matched Prefix     Prefix Len Interface  Route Type     Status Preference
+-----      --------------     ---------- ---------  ----------     ------ ----------
+2          172.16.0.0         16                      Static     active 10
+3          172.16.10.0        24       eth0           Static     active 20
+4          172.16.10.0        24       eth2           Static   inactive 0
+cli> exit    help
+=== CLI Help ===
+Supported commands: 
+  show-interfaces            - Display interface information
+  show-interface <eth>       - Display information for specific interface
+  show-interface-stats <eth> - Display statistics for specific interface
+  show-all-interface-stats   - Display statistics for all interfaces
+  show-route | show-routes   - Display route information
+  network <eth> down|up      - Update interface status
+  route-del <net> <prefix> <nexthop> <interface>  - Delete route at index
+  route-add <net> <prefix> <nexthop> <interface>  - Add a new route
+  route-mod <net> <prefix> <nexthop> <interface> <preference> - Modify an existing route
+  lookup <IPv4>              - Perform a route lookup
+  explain-lookup <IPv4>      - Explain the route lookup process
+  help | h | ?               - Display the help message
+  exit | quit | q            - Exit the CLI
+================
+cli> exit
+CLI loop exited.
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[00m$ exit
+[?2004lexit
+
+Script done on 2026-05-10 12:15:05+00:00 [COMMAND_EXIT_CODE="0"]

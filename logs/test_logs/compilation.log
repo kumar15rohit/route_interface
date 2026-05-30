@@ -1,0 +1,10 @@
+Script started on 2026-05-10 11:23:09+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="96" LINES="58"]
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ make cleam[Kn; make
+[?2004lrm -f bin/*
+mkdir -p bin
+cp -f ../sample/interfaces.json ../sample/static_routes.json bin/
+gcc -I../include -Wall -Wextra -g3 ../src/cli.c ../src/common.c ../src/interface.c ../src/json_conf_loader.c ../src/lpm_engine.c ../src/main.c ../src/print_utils.c ../src/route_table_manager.c -o bin/router_demo
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ exit
+[?2004lexit
+
+Script done on 2026-05-10 11:23:25+00:00 [COMMAND_EXIT_CODE="0"]

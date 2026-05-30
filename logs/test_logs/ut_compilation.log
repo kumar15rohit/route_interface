@@ -1,0 +1,28 @@
+Script started on 2026-05-10 11:23:34+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="96" LINES="58"]
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ makec[K clean; make al[K[Kexit[Kmake clean; makeexit[Kgdb ./test_router exitls[K./test_cli ls[K./test_cli [7Pexit./test_router mv Cisco_Project/ Routing_LPM_Cisco_Assignment_Rohit_Kumar[A]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ ls[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmv Cisco_Project/ Routing_LPM_Cisco_Assignment_Rohit_Kumar[A]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ ls[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd ../../ls[Kcd bin/[3Pmakecd ..[3Plscd bin/ls[Kmake test_cli[1Pvi makefile make test_cli
+[?2004lgcc -I../include -Wall -Wextra -g3 \
+../src/interface.c \
+../src/route_table_manager.c \
+../src/lpm_engine.c \
+../src/common.c \
+../src/cli.c \
+../src/print_utils.c \
+../ut/ut_cli.c \
+-o bin/test_cli
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ make test_cli[K[K[Krouter
+[?2004lgcc -I../include -Wall -Wextra -g3 \
+../src/interface.c \
+../ut/ut_router.c \
+../src/route_table_manager.c \
+../src/lpm_engine.c \
+../src/common.c \
+../src/print_utils.c \
+-o bin/test_router
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ ls bin/
+[?2004linterfaces.json  [0m[01;32mrouter_demo[0m  static_routes.json  [01;32mtest_cli[0m  [01;32mtest_router[0m
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ exit
+[?2004lexit
+
+Script done on 2026-05-10 11:24:25+00:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,61 @@
+Script started on 2026-05-10 12:09:55+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="149" LINES="47"]
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ exit./test_router [3Pcli[Cls[Kcd binmake test_all
+[?2004lgcc -I../include -Wall -Wextra -g3 \
+../src/interface.c \
+../ut/ut_router.c \
+../src/route_table_manager.c \
+../src/lpm_engine.c \
+../src/common.c \
+../src/print_utils.c \
+-o bin/test_router
+gcc -I../include -Wall -Wextra -g3 \
+../src/interface.c \
+../src/route_table_manager.c \
+../src/lpm_engine.c \
+../src/common.c \
+../src/cli.c \
+../src/print_utils.c \
+../ut/ut_cli.c \
+-o bin/test_cli
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build[00m$ cd bin
+[?2004l[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[00m$ cd binmake test_allexit[K./test_router 
+[?2004l=== Running Consolidated Router/LPM Unit Tests ===
+Route added at index 0: 192.0.2.1/24 via 192.0.2.1 dev eth0
+Route at index 0 deleted
+PASS: test_add_and_delete_routes
+Route added at index 0: 10.0.0.1/8 via 10.0.0.1 dev eth0
+Route added at index 1: 10.0.0.2/16 via 10.0.0.2 dev eth0
+Route added at index 2: 10.0.0.3/32 via 10.0.0.3 dev eth0
+PASS: test_lpm_longest_prefix_choice
+Route added at index 0: 10.0.0.254/0 via 10.0.0.254 dev eth0
+PASS: test_default_route_behavior
+Error: invalid prefix length
+Route added at index 0: 1.2.3.5/24 via 1.2.3.5 dev eth0
+PASS: test_invalid_and_boundary_cases
+=== Router/LPM tests complete ===
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[00m$ ./test_router [K[K[K[K[K[K[Kcli
+[?2004l=== Running CLI Unit Tests ===
+PASS: test_valid_show_interfaces
+Route added at index 0: 192.168.1.0/24 via DIRECT dev eth0
+PASS: test_valid_show_route
+PASS: test_invalid_command_handling
+PASS: test_missing_arg_validation
+PASS: test_invalid_ipv4_and_prefix
+Route added at index 0: 10.0.0.1/16 via 10.0.0.1 dev eth0
+PASS: test_route_add_and_duplicate (count=2)
+Route added at index 0: 172.16.0.1/16 via 172.16.0.1 dev eth1
+PASS: test_route_mod_and_del
+Route added at index 0: 1.1.1.1/24 via 1.1.1.1 dev eth0
+Route added at index 1: 10.0.0.254/0 via 10.0.0.254 dev eth0
+PASS: test_lookup_exact_and_default
+Route added at index 0: 10.0.0.1/16 via 10.0.0.1 dev eth0
+PASS: test_explain_lookup_validation
+PASS: test_network_up_down_and_interface_not_found
+PASS: test_empty_tables_and_boundary_handling
+PASS: test_help_and_exit_and_whitespace
+PASS: test_cli_unknown_and_whitespace_tab_handling
+=== All CLI tests executed ===
+[?2004h]0;rohit@speak2rohit: ~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[01;32mrohit@speak2rohit[00m:[01;34m~/Routing_LPM_Cisco_Assignment_Rohit_Kumar/build/bin[00m$ exit
+[?2004lexit
+
+Script done on 2026-05-10 12:10:20+00:00 [COMMAND_EXIT_CODE="0"]
